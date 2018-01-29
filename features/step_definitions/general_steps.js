@@ -12,4 +12,10 @@ defineSupportCode(function ({And, But, Given, Then, When}) {
     Then(/^I can sign up to the newsletter using a random email$/, function () {
         Footerpage.signUpForNewsletter(config.get('valid_email_address'));
     });
+
+    Given(/^I visit the Net\-a\-porter website$/, function () {
+        Homepage.open();
+        browser.pause(5000)
+    });
+
 });

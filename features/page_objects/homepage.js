@@ -6,6 +6,8 @@ class Homepage extends Page {
 
     get topLevelNavLinks() { return browser.elements('ul.sf-nav__bar.sf-nav__section li.sf-nav__level1'); }
 
+    get localeHeader() { return browser.element('div.sf-header__locale') }
+
     get registerLink() { return browser.element('li.sf-account__register a'); }
     get signInLink() { return browser.element('li.sf-account__sign-in a'); }
     get wishlistIcon() { return browser.element('a.sf-wishlist__icon'); }
@@ -24,6 +26,12 @@ class Homepage extends Page {
     get sortProductsBy() { return browser.element('form#product-list-price-filter select');}
 
     get sizeGuideLink() {return browser.element('a#filters-size-guide')}
+
+    get searchField() { return browser.element('nav.sf-nav.sf-hover div.sf-search');}
+    get searchFieldInput() { return browser.element('nav.sf-nav.sf-hover div.sf-search__header form input'); }
+
+    get countryPopup() { return browser.element('span.sf-country-popup__toggle'); }
+    get countryPopupContents() { return browser.element('div.sf-popup__content ul') }
 
     open() {
         super.open('/');
@@ -45,21 +53,21 @@ class Homepage extends Page {
     }
 
     setCountryTo(country) {
-        browser.element('span.sf-country-popup__toggle').click()
-        browser.element('div.sf-popup__content ul').waitForVisible()
+        this.countryPopup.click()
+        this.countryPopupContents.waitForVisible()
         //browser.element('div.sf-popup__content ul').elements('li label').value.forEach(function(elem){ console.log(elem.getValue())})
-        browser.element('div.sf-popup__content ul').elements('li').element("label*="+country+"").click()
-        expect(browser.element('span.sf-country-popup__toggle').getText()).to.equal(country)
+        this.countryPopupContents.elements('li').element("label*="+country+"").click()
+        expect(this.countryPopup.getText()).to.equal(country)
     }
 
     getCurrentLocaleDetails() {
-        browser.element('div.sf-header__locale').getText()
+        this.localeHeader.getText()
     }
 
     searchForTerm(searchTerm) {
-        browser.element('nav.sf-nav.sf-hover div.sf-search').click()
-        browser.element('nav.sf-nav.sf-hover div.sf-search__header form input').isVisible()
-        browser.element('nav.sf-nav.sf-hover div.sf-search__header form input').setValue(searchTerm)
+        this.searchField.click()
+        this.searchFieldInput.isVisible()
+        this.searchFieldInput.setValue(searchTerm)
         browser.pause(1000)
     }
 

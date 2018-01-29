@@ -1,3 +1,4 @@
+@pending
 Feature: Recommendations
 
   As a user of the NAP website
@@ -7,7 +8,6 @@ Feature: Recommendations
   Background:
     Given I am on the NAP Homepage
 
-  @pending
   Scenario: User is shown HOW TO WEAR IT recommendations
     When I can choose the top level category of "CLOTHING"
     And I choose to purchase a product from the designer "PRADA"

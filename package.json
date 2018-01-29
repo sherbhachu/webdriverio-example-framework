@@ -8,6 +8,7 @@
     "selenium-start": "node_modules/.bin/selenium-standalone start",
     "test": "./node_modules/.bin/wdio",
     "phantomjs": "./node_modules/.bin/wdio wdio.phantomjs.config.js",
+    "mobilesafari": "./node_modules/.bin/wdio wdio.mobile.safari.config.js",
     "allure-report": "node_modules/.bin/allure generate ./allure-results/ && allure report"
   },
   "repository": {

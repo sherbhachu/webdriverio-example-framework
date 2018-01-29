@@ -10,9 +10,9 @@ Feature: Filter Product Listings Page
   Scenario: User is able browse for a specific Designer
     Given I can choose the top level category of "SHOES"
     When I select the designer "Altuzarra"
-    Then The products listed should all have "Altuzarra" as the Designer
+    Then The products listed should all have "ALTUZARRA" as the Designer
 
-  Scenario: User is able browse using a specific Colour
+  Scenario: User is able browse using a specific Size
     Given I can choose the top level category of "LINGERIE"
     And I capture the current number of results
     When I select the size "S"

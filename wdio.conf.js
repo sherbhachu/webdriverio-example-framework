@@ -43,7 +43,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 5,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -62,7 +62,7 @@ exports.config = {
 
         {
             browserName: 'chrome',
-            maxInstances: 5,
+            maxInstances: 1,
             acceptSslCerts : true,
         }
     ],
@@ -177,7 +177,7 @@ exports.config = {
         profile: [],        // <string[]> (name) specify the profile to use
         strict: false,      // <boolean> fail if there are any undefined or pending steps
         //tags: [],           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: 'not @ignore and not @debug and not @pending',
+        tagExpression: 'not @ignore and not @debug and not @pending and not @safari',
         timeout: defaultTimeoutInterval,     // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
     },

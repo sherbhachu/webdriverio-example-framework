@@ -13,29 +13,39 @@ class ProductListingsPage extends Page {
 
     get listOfDesignersInProductsListings() {return browser.elements('span.designer'); }
 
+    get subNavSection() { return browser.element('ul#subnav.category-nav.nav-section.filter'); }
+
+    get designerFilterContainer() { return browser.element('div.filters div#designer-filter div div.jspContainer'); }
+
+    get designerFilterScrollable() { return browser.element('#designer-filter div.scroll-pane.jspScrollable');}
+
+    get filtersSizes() { return browser.element('a#filters-size-guide'); }
+
     chooseClothingCategory(category) {
-        browser.element('ul#subnav.category-nav.nav-section.filter').elements('li').value.some(function(elem){
+        this.subNavSection().elements('li').value.some(function(elem){
             if (elem.getText() === category) {
                 return elem.click();
             }
         });
-        expect(browser.element('ul#subnav.category-nav.nav-section.filter').element('li.selected').getText()).to.include(category)
+        expect(this.subNavSection().element('li.selected').getText()).to.include(category)
     }
 
     getListOfCurrentVisibleDesigners() {
         var arr = [];
-        browser.element('div.filters div#designer-filter div div.jspContainer').elements('li a div.filter-name span').value.forEach(function(elem){
+        this.designerFilterContainer.elements('li a div.filter-name span').value.forEach(function(elem){
             arr.push(elem.getText())
         });
         return arr
     }
 
     moveToDesignerScrollView() {
-        browser.moveToObject('div.filters div#designer-filter div div.jspContainer',0,-200)
+        browser.moveToObject(this.designerFilterContainer.selector,0,-200)
     }
 
     moveToSizeOptions() {
-        browser.moveToObject('a#filters-size-guide')
+        if (browser.isVisible(this.filtersSizes.selector) === true) {
+            browser.moveToObject(this.filtersSizes.selector)
+        }
     }
 
     scrollDesignerIntoView(designer) {
@@ -43,15 +53,15 @@ class ProductListingsPage extends Page {
         var visiblieDesigners = this.getListOfCurrentVisibleDesigners();
 
         while ((count < 10) && !visiblieDesigners.includes(designer)) {
-            browser.swipeUp('#designer-filter div.scroll-pane.jspScrollable',200,500)
+            browser.swipeUp(this.designerFilterScrollable.selector,200,500)
             browser.pause(1000)
             visiblieDesigners = this.getListOfCurrentVisibleDesigners();
         }
-        browser.swipeUp('#designer-filter div.scroll-pane.jspScrollable',20,500)
+        browser.swipeUp(this.designerFilterScrollabl.selector,20,500)
     }
 
     clickOnDesignerInView(designer) {
-        browser.element('div.filters div#designer-filter div div.jspContainer').elements('li a div.filter-name').element("span*="+designer+"").click()
+        browser.element(this.designerFilterContainer.selector).elements('li a div.filter-name').element("span*="+designer+"").click()
     }
 
     getNumberOfResuts() {
@@ -77,7 +87,7 @@ class ProductListingsPage extends Page {
 
     chooseColour(colourOption) {
         browser.elements('div#colour-filter li a span').element(".filter-name="+colourOption+"").click();
-        browser.pause(1000);
+        browser.pause(3000); //change to waitUntil later.
         expect(browser.elements('div#colour-filter li a span').element(".filter-name="+colourOption+"").element('../..').getAttribute('class')).to.equal("selected")
     }
 
@@ -95,6 +105,7 @@ class ProductListingsPage extends Page {
     }
 
     chooseSize(sizeOption) {
+        this.moveToDesignerScrollView()
         this.moveToSizeOptions()
         browser.elements('div#size-filter li a span').element(".size_value="+sizeOption+"").click()
         browser.pause(1000);
@@ -170,13 +181,13 @@ class ProductListingsPage extends Page {
     }
 
     getCurrentNumberOfProducts() {
-        return parseInt(this.currentNumberOfProducts.getText().slice(1).replace(/,/g, ''))
+        browser.moveToObject(this.currentNumberOfProducts.selector);
+        return parseInt(this.currentNumberOfProducts.getText().replace(/,/g, ''))
     }
 
     generateRandomNumber(range = 10) {
         return Math.floor(Math.random() * range) + 1
     }
-
 
 }
 

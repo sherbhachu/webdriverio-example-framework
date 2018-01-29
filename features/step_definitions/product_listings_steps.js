@@ -18,7 +18,6 @@ defineSupportCode(function ({And, But, Given, Then, When}) {
     Given(/^I capture the current number of results$/, function () {
         ProductListingsPage.currentNumberOfProducts.waitForVisible();
         InitialNumOfProducts = ProductListingsPage.getCurrentNumberOfProducts();
-        console.log(InitialNumOfProducts)
     });
 
     When(/^I select the colour "([^"]*)"$/, function (colourChosen) {

@@ -1,13 +1,12 @@
 # webdriverio-example-framework
-WebdriverIO framework that uses ES6 (with Babel), Cucumber, Chai, Page Object model and more.
+WebdriverIO framework that uses ES6 (with Babel), Cucumber, Chai, Page Object model, Appium and more.
 
+Note that this is a real world example and uses the Net A Porter website (http://www.net-a-porter.com)
 ### Updates over the next few days (early Feb 2018...)
 
-1. Tidy up the page objects so that browser elements are moved out of functions
-2. Update wdio.conf.js, its a bit messy
-3. Add more tasks in package.json
-4. Add wdio configs for Safari on iOS devices
-5. Add BrowserStack capability
+1. Tidy up (a little more) the page objects so that browser elements are moved out of functions
+2. Update wdio.conf.js, again, its a bit messy, but less than before
+3. Add BrowserStack capability
 
 ## Assumptions...
 
@@ -24,6 +23,7 @@ WebdriverIO framework that uses ES6 (with Babel), Cucumber, Chai, Page Object mo
  6. A good example to see Chai expectations in action.
  7. Good use of the Page Object Model.
  8. Demonstrable use of some ES6 capabilities.
+ 9. Supports Safari, on an iOS simulator (local, using Appium)
 
 ## What this is not...
 
@@ -62,4 +62,9 @@ Run a suite of tests, in this instance, the 'basic' suite...
 ```
 wdio --suite nonbasket
 
+```
+
+Run a feature file for Safari on an iOS simulator...
+```
+wdio wdio.mobile.safari.config.js --spec features/safari.feature 
 ```
