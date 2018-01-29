@@ -1,6 +1,5 @@
 import ProductListingsPage from "../page_objects/product_listings_page";
 import { defineSupportCode } from 'cucumber';
-const __ = require('underscore');
 var InitialNumOfProducts = '';
 
 defineSupportCode(function ({And, But, Given, Then, When}) {
@@ -11,7 +10,7 @@ defineSupportCode(function ({And, But, Given, Then, When}) {
     });
 
     Then(/^The products listed should all have "([^"]*)" as the Designer$/, function (brandToCheck) {
-        let designers = __.uniq(ProductListingsPage.getAllDesignerNamesListedInView());
+        let designers = _.uniq(ProductListingsPage.getAllDesignerNamesListedInView());
         expect(designers).to.eql([brandToCheck])
     });
 

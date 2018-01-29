@@ -1,4 +1,7 @@
 const defaultTimeoutInterval = process.env.DEBUG ? 20000000 : 90000;
+global._ = require('underscore');
+global.test_data = require('config');
+
 //process.env.NODE_ENV = 'default';
 
 exports.config = {
