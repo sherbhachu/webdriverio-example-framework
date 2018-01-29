@@ -1,4 +1,5 @@
 .idea/
+reports/
 node_modules/
 allure-results/
 errorShots/

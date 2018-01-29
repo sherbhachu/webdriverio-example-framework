@@ -91,7 +91,7 @@ exports.config = {
     bail: 0,
     //
     // Saves a screenshot to a given path if a command fails.
-    screenshotPath: './errorShots/',
+    screenshotPath: './reports/errorShots/',
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -147,11 +147,11 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
     // reporters: ['dot'],//
-    reporters: ['spec','dot', 'allure','cucumber'],
+    reporters: ['spec','dot','allure','cucumber','junit'],
     reporterOptions: {
-        allure: {
-            outputDir: 'allure-results'
-        }
+        junit:  {outputDir: './reports/junit-results/'},
+        allure: {outputDir: './reports/allure-results/'},
+        json:   {outputDir: './reports/json-results/'}
     },
 
     // If you are using Cucumber you need to specify the location of your step definitions.
