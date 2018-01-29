@@ -1,0 +1,89 @@
+{
+  "name": "webdriverio-example-framework",
+  "version": "1.0.0",
+  "description": "WebdriverIO Test Automation Framework, using Page Objects, Chai, Cucumber and ES6",
+  "main": "index.js",
+  "scripts": {
+    "selenium-postinstall": "node node_modules/.bin/selenium-standalone install",
+    "selenium-start": "node_modules/.bin/selenium-standalone start",
+    "test": "./node_modules/.bin/wdio",
+    "phantomjs": "./node_modules/.bin/wdio wdio.phantomjs.config.js",
+    "allure-report": "node_modules/.bin/allure generate ./allure-results/ && allure report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sherbhachu/webdriverio-example-framework.git"
+  },
+  "keywords": [
+    "webdriverio",
+    "es6",
+    "cucumber",
+    "wdio",
+    "automation",
+    "testing",
+    "selenium"
+  ],
+  "author": "Sher Bhachu <sherbhachu@googlemail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sherbhachu/webdriverio-example-framework/issues"
+  },
+  "homepage": "https://github.com/sherbhachu/webdriverio-example-framework#readme",
+  "dependencies": {
+    "appium": "^1.7.2",
+    "assert": "^1.4.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.7.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.6.5",
+    "chai": "^4.1.2",
+    "config": "^1.29.2",
+    "cucumber": "^3.0.0",
+    "eslint": "^3.19.0",
+    "fibers": "^2.0.0",
+    "underscore": "^1.8.3",
+    "wdio-allure-reporter": "^0.3.0",
+    "wdio-cucumber-reporter": "0.0.2",
+    "wdio-spec-reporter": "^0.1.2",
+    "webdrivercss": "^1.1.10",
+    "webdriverio": "^4.8.0",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "allure-commandline": "^1.5.0",
+    "allure-js-commons": "^1.2.1",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-register": "^6.26.0",
+    "chromedriver": "^2.34.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^3.16.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "selenium-standalone": "^6.8.0",
+    "wdio-appium-service": "^0.2.3",
+    "wdio-browserstack-service": "^0.1.4",
+    "wdio-chromedriver-service": "^0.1.2",
+    "wdio-cucumber-framework": "^1.0.4",
+    "wdio-phantomjs-service": "^0.2.2",
+    "wdio-sauce-service": "^0.2.2",
+    "wdio-screenshot": "^0.5.0",
+    "wdio-selenium-standalone-service": "0.0.4",
+    "wdio-visual-regression-service": "^0.8.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ],
+    "sourceMaps": true,
+    "retainLines": true
+  }
+}
