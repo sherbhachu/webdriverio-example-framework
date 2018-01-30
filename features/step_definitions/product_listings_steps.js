@@ -1,6 +1,6 @@
 import ProductListingsPage from "../page_objects/product_listings_page";
 import { defineSupportCode } from 'cucumber';
-var InitialNumOfProducts = '';
+let InitialNumOfProducts = '';
 
 defineSupportCode(function ({And, But, Given, Then, When}) {
 

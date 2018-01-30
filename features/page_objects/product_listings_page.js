@@ -2,24 +2,24 @@ import Page from './page';
 
 class ProductListingsPage extends Page {
 
-    get currentProductListTitle() { return browser.element('div.product-list-title h1'); }
-    get currentNumberOfProducts() {return browser.element('div.product-list-title span.total-number-of-products'); }
+    get currentProductListTitle() { return $('div.product-list-title h1') }
+    get currentNumberOfProducts() { return $('div.product-list-title span.total-number-of-products') }
 
-    get currentSelectedView() { return browser.element('div#product-list-menu.product-list-menu div.product-list-view-and-sort a.secondary-button.selected'); }
+    get currentSelectedView() { return $('div#product-list-menu.product-list-menu div.product-list-view-and-sort a.secondary-button.selected') }
 
-    get sortProductsBy() { return browser.element('form#product-list-price-filter select'); }
+    get sortProductsBy() { return $('form#product-list-price-filter select') }
 
-    get sizeGuideLink() {return browser.element('a#filters-size-guide'); }
+    get sizeGuideLink() { return $('a#filters-size-guide') }
 
-    get listOfDesignersInProductsListings() {return browser.elements('span.designer'); }
+    get listOfDesignersInProductsListings() { return browser.elements('span.designer') }
 
-    get subNavSection() { return browser.element('ul#subnav.category-nav.nav-section.filter'); }
+    get subNavSection() { return $('ul#subnav.category-nav.nav-section.filter') }
 
-    get designerFilterContainer() { return browser.element('div.filters div#designer-filter div div.jspContainer'); }
+    get designerFilterContainer() { return $('div.filters div#designer-filter div div.jspContainer') }
 
-    get designerFilterScrollable() { return browser.element('#designer-filter div.scroll-pane.jspScrollable');}
+    get designerFilterScrollable() { return $('#designer-filter div.scroll-pane.jspScrollable') }
 
-    get filtersSizes() { return browser.element('a#filters-size-guide'); }
+    get filtersSizes() { return $('a#filters-size-guide') }
 
     chooseClothingCategory(category) {
         this.subNavSection().elements('li').value.some(function(elem){
@@ -31,7 +31,7 @@ class ProductListingsPage extends Page {
     }
 
     getListOfCurrentVisibleDesigners() {
-        var arr = [];
+        let arr = [];
         this.designerFilterContainer.elements('li a div.filter-name span').value.forEach(function(elem){
             arr.push(elem.getText())
         });
@@ -49,8 +49,8 @@ class ProductListingsPage extends Page {
     }
 
     scrollDesignerIntoView(designer) {
-        var count = 0;
-        var visiblieDesigners = this.getListOfCurrentVisibleDesigners();
+        let count = 0;
+        let visiblieDesigners = this.getListOfCurrentVisibleDesigners();
 
         while ((count < 10) && !visiblieDesigners.includes(designer)) {
             browser.swipeUp(this.designerFilterScrollable.selector,200,500)
@@ -61,11 +61,11 @@ class ProductListingsPage extends Page {
     }
 
     clickOnDesignerInView(designer) {
-        browser.element(this.designerFilterContainer.selector).elements('li a div.filter-name').element("span*="+designer+"").click()
+        $(this.designerFilterContainer.selector).elements('li a div.filter-name').element("span*="+designer+"").click()
     }
 
     getNumberOfResuts() {
-        parseFloat(browser.element('div.product-list-title span.total-number-of-products').getText().replace(/,/g, ''))
+        parseFloat($('div.product-list-title span.total-number-of-products').getText().replace(/,/g, ''))
     }
 
     switchToOutfitView() {
@@ -96,8 +96,8 @@ class ProductListingsPage extends Page {
     }
 
     clearAllColours() {
-        browser.element('div#colour-filter a.clear_filter').click()
-        var arr = []
+        $('div#colour-filter a.clear_filter').click()
+        let arr = []
         browser.elements('div#colour-filter ul li').value.forEach(function(elem) {
             arr.push(elem.getAttribute('class'))
         })
@@ -113,8 +113,8 @@ class ProductListingsPage extends Page {
     }
 
     clearAllSizes() {
-        browser.element('div#size-filter a.clear_filter').click()
-        var arr = []
+        $('div#size-filter a.clear_filter').click()
+        let arr = []
         browser.elements('div#size-filter ul li').value.forEach(function(elem) {
             arr.push(elem.getAttribute('class'))
         })
@@ -129,7 +129,7 @@ class ProductListingsPage extends Page {
     }
 
     getFirstProductsDetails() {
-        let split = browser.element('div#product-list ul.products li div.description').getText().split('\n')
+        let split = $('div#product-list ul.products li div.description').getText().split('\n')
         return {
             designer: split[0],
             description: split[1],
@@ -138,11 +138,11 @@ class ProductListingsPage extends Page {
     }
 
     getPricesOfAllVisibleProducts() {
-        var arr = []
+        let arr = []
         browser.elements('div#product-list ul.products li div.description span.price').value.forEach(function(elem) {
             arr.push(elem.getText())
         })
-        var filteredArr = []
+        let filteredArr = []
         arr.forEach(function(elem) {
             filteredArr.push(elem.slice(1).replace(/,/g, ''))
         })
@@ -172,7 +172,7 @@ class ProductListingsPage extends Page {
     }
 
     getAllDesignerNamesListedInView() {
-        var arr = [];
+        let arr = [];
         this.listOfDesignersInProductsListings.waitForVisible();
         this.listOfDesignersInProductsListings.value.forEach(function(elem) {
             arr.push(elem.getText())
