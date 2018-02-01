@@ -14,7 +14,11 @@ defineSupportCode(function ({And, But, Given, Then, When}) {
 
     Given(/^I visit the Net\-a\-porter website$/, function () {
         Homepage.open();
-        browser.pause(5000)
+        browser.pause(2000)
+    });
+
+    Then(/^I am able to verify that Chrome is launched on Android$/, function () {
+        expect(browser.currentActivity().value).to.eql('com.google.android.apps.chrome.Main')
     });
 
 });
