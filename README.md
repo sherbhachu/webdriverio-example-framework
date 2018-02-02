@@ -40,8 +40,6 @@ Drop me an email, sherbhachu@googlemail.com for any comments, suggestions, etc.
 
 ## Instructions/Config required prior to use...
 
-I like to use RVM to get my house in order...
-
 1. cd into webdriverio-example-framework/
 2. npm install (it would be useful for me to know if you suffer any obscure/weird dependency issues...if unsure, always google first!)
 3. npm run-script selenium-start
