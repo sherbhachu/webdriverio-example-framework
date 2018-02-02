@@ -4,7 +4,7 @@ import { defineSupportCode } from 'cucumber';
 
 defineSupportCode(function ({And, But, Given, Then, When}) {
     Then(/^I can see that the URL has updated to have "([^"]*)" within it$/, function (urlString,) {
-        expect(browser.getUrl()).to.include("/" + urlString + "/")
+        expect(browser.getUrl()).to.include(`/${urlString}/`)
     });
 
     When(/^I set the country to be "([^"]*)"$/, function (country) {

@@ -22,9 +22,9 @@ class ProductListingsPage extends Page {
     get filtersSizes() { return $('a#filters-size-guide') }
 
     chooseClothingCategory(category) {
-        this.subNavSection().elements('li').value.some(function(elem){
+        this.subNavSection().elements('li').value.some(elem => {
             if (elem.getText() === category) {
-                return elem.click();
+                return elem.click()
             }
         });
         expect(this.subNavSection().element('li.selected').getText()).to.include(category)
@@ -32,7 +32,7 @@ class ProductListingsPage extends Page {
 
     getListOfCurrentVisibleDesigners() {
         let arr = [];
-        this.designerFilterContainer.elements('li a div.filter-name span').value.forEach(function(elem){
+        this.designerFilterContainer.elements('li a div.filter-name span').value.forEach(elem => {
             arr.push(elem.getText())
         });
         return arr
@@ -55,7 +55,7 @@ class ProductListingsPage extends Page {
         while ((count < 10) && !visiblieDesigners.includes(designer)) {
             browser.swipeUp(this.designerFilterScrollable.selector,200,500)
             browser.pause(1000)
-            visiblieDesigners = this.getListOfCurrentVisibleDesigners();
+            visiblieDesigners = this.getListOfCurrentVisibleDesigners()
         }
         browser.swipeUp(this.designerFilterScrollabl.selector,20,500)
     }
@@ -98,7 +98,7 @@ class ProductListingsPage extends Page {
     clearAllColours() {
         $('div#colour-filter a.clear_filter').click()
         let arr = []
-        browser.elements('div#colour-filter ul li').value.forEach(function(elem) {
+        browser.elements('div#colour-filter ul li').value.forEach(elem => {
             arr.push(elem.getAttribute('class'))
         })
         expect(arr).not.to.include('selected')
@@ -115,7 +115,7 @@ class ProductListingsPage extends Page {
     clearAllSizes() {
         $('div#size-filter a.clear_filter').click()
         let arr = []
-        browser.elements('div#size-filter ul li').value.forEach(function(elem) {
+        browser.elements('div#size-filter ul li').value.forEach(elem => {
             arr.push(elem.getAttribute('class'))
         })
         expect(arr).not.to.include('selected')
@@ -139,7 +139,7 @@ class ProductListingsPage extends Page {
 
     getPricesOfAllVisibleProducts() {
         let arr = []
-        browser.elements('div#product-list ul.products li div.description span.price').value.forEach(function(elem) {
+        browser.elements('div#product-list ul.products li div.description span.price').value.forEach(elem => {
             arr.push(elem.getText())
         })
         let filteredArr = []
@@ -160,7 +160,7 @@ class ProductListingsPage extends Page {
 
     chooseProductWithDesigner(designer) {
         this.listOfDesignersInProductsListings.waitForVisible();
-        browser.elements('div#product-list ul.products li div.description span.designer').value.some(function(elem) {
+        browser.elements('div#product-list ul.products li div.description span.designer').value.some(elem => {
             if (elem.getText() === designer) {
                 return elem.click();
             }
@@ -174,7 +174,7 @@ class ProductListingsPage extends Page {
     getAllDesignerNamesListedInView() {
         let arr = [];
         this.listOfDesignersInProductsListings.waitForVisible();
-        this.listOfDesignersInProductsListings.value.forEach(function(elem) {
+        this.listOfDesignersInProductsListings.value.forEach(elem => {
             arr.push(elem.getText())
         });
         return arr

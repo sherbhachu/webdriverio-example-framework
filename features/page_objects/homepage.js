@@ -38,11 +38,11 @@ class Homepage extends Page {
     }
 
     selectTopLevelMenuItem(option) {
-        this.topLevelNavLinks.value.some(function(elem){
+        this.topLevelNavLinks.value.some(elem => {
             if (elem.getText() === option) {
-                return elem.click();
+                return elem.click()
             }
-        });
+        })
     }
 
     selectSubLevelMenuItem(toplevel,sublevel) {
@@ -72,18 +72,18 @@ class Homepage extends Page {
     }
 
     getSearchSuggestions() {
-        this.currentSearchSuggestions.waitForVisible();
-        let suggestions = [];
-        this.currentSearchSuggestions.elements('li a').value.forEach(function(elem){
+        this.currentSearchSuggestions.waitForVisible()
+        let suggestions = []
+        this.currentSearchSuggestions.elements('li a').value.forEach(elem => {
             suggestions.push(elem.getText())
         });
         return suggestions
     }
 
     chooseClothingCategory(category) {
-        $('ul#subnav.category-nav.nav-section.filter').elements('li').value.some(function(elem){
+        $('ul#subnav.category-nav.nav-section.filter').elements('li').value.some(elem => {
             if (elem.getText() === category) {
-                return elem.click();
+                return elem.click()
             }
         });
         expect($('ul#subnav.category-nav.nav-section.filter').element('li.selected').getText()).to.include(category)

@@ -180,7 +180,7 @@ exports.config = {
         profile: [],        // <string[]> (name) specify the profile to use
         strict: false,      // <boolean> fail if there are any undefined or pending steps
         //tags: [],           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: 'not @ignore and not @debug and not @pending and not @safari',
+        tagExpression: 'not @ignore and not @debug and not @pending and not @safari and not @android',
         timeout: defaultTimeoutInterval,     // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
     },

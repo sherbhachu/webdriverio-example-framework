@@ -4,7 +4,7 @@ export default class Page {
     }
 
     saySomething(name) {
-        console.log("Hello "+name+" from the base page!");
+        console.log(`Hello ${name} from the base page!`)
     }
 
 }
