@@ -10,7 +10,8 @@
     "phantomjs": "./node_modules/.bin/wdio wdio.phantomjs.config.js",
     "mobilesafari": "./node_modules/.bin/wdio wdio.mobile.safari.config.js",
     "mobileandroidchrome": "./node_modules/.bin/wdio wdio.mobile.android.chrome.config.js",
-    "allure-report": "node_modules/.bin/allure generate .reports/allure-results/ && allure report"
+    "allure-report": "node_modules/.bin/allure generate .reports/allure-results/ && allure report",
+    "parameterisedappium": "./node_modules/.bin/wdio wdio.mobile.parameterised.config.js --suite mobile"
   },
   "repository": {
     "type": "git",

@@ -7,6 +7,7 @@ Feature: Filter Product Listings Page
   Background:
     Given I am on the NAP Homepage
 
+  @justme
   Scenario: User is able browse for a specific Designer
     Given I can choose the top level category of "SHOES"
     When I select the designer "Altuzarra"

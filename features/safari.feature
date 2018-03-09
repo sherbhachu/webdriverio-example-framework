@@ -8,3 +8,5 @@ Feature: Safari on iOS
   Scenario: Visit the NAP site using Safari
     Given I visit the Net-a-porter website
 
+  Scenario: Visit the NAP site using Safari
+    Given I visit the Net-a-porter website

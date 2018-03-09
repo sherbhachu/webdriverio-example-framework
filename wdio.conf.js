@@ -27,8 +27,12 @@ exports.config = {
         basic: [
             './features/newsletter.feature',
             './features/search.feature',
-            './features/general_navigation.feature',
-        ]},
+            './features/general_navigation.feature'
+        ],
+        mobile: [
+            './features/safari.feature'
+        ]
+    },
 
     //
     // ============

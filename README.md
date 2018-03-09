@@ -58,11 +58,22 @@ DEBUG=true wdio --spec features/search.feature
 
 Run a suite of tests, in this instance, the 'basic' suite...
 ```
-wdio --suite nonbasket
-
+wdio --suite basic
 ```
 
 Run a feature file for Safari on an iOS simulator...
 ```
 wdio wdio.mobile.safari.config.js --spec features/safari.feature 
 ```
+
+Run tests with a specific cucumber tag...
+```wdio --cucumberOpts.tagExpression='@justme'```
+
+Run the parameterised mobile configuration (see package.json), which runs a specific suite (mobile, located in the wdio.conf.js file)
+```
+DEVICE_NAME="iPhone 6" PLATFORM_VERSION="11.2" npm run parameterisedappium
+```
+
+Note that there are a few limitations to this, in the fact that WDIO does not currently allow you start multiple instances of Appium,
+i.e. in does not seem to allow you to start Appium instance 'A' on port 1234 and Appium instance 'B' on port 4567.
+This has to be managed separately, at least from what I can tell.
